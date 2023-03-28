@@ -17,6 +17,18 @@ to have the final target fit our needs.
 In the Deferred diagram, the start is the same as Foward but it takes a turn as they all head into a shader then into the final target.
 Unlike the Forward rendering the infomation gets passed down into the G-Buffer before it produces the final target image on screen. 
 
+**Explaining Code Snippet 1**
+
+
+
+
+
+
+
+
+
+
+
 **Explaining Code Snippet 2**
 
 The yellow Highlight in the code is implementing and the shadowColor variable so that it can be seen in the inspector in unity while also being used
@@ -35,6 +47,19 @@ highlight shadow on the object to be visible with the color chosen
 In the picture shown with the black cube with white lighting as you turn or move the object. This can be used when you want to adjust the shadow color on a specific object to make it more distinct.
 Adding a texture on to the object while having its on color shadow allows for objects in game scenes to be mor unqiue
 
+**Choose Any Shader (Overlay Shader)**
 
+In this shader, we will be taking 2 textuers and have them overlay each other and placed as the ground or as water. Allowing for good depth and detail on to any game scene.
+We first declare 2 main texutes with the over main texture being the one that will overlay the other. We have Scroll X and Y as time changes allowing the overlay shader to show as it ranges from -5 to 5. In the void Surf function we are having the scoll x and y change rates as time goes by. the first main texture will go with the orginally scroll x and y to time as the overlay texture will 
+be going at half the rate the main tex, thus showing the 2 textures overlaying. Finally we find the average of the 2 textures which will then be set to the o.Albedo. This shader can be used when the player is looking or running towards a terrain, having the 2 gorund textures move in different rates in time creates movement which can present the player to a different feeling as they move 
+their player. Such as lava moving below them as they try to parkour to the end side of the level.
+
+(FlowChart in Folder)
+
+
+**Resources**
+Grass: https://www.google.com/imgres?imgurl=https%3A%2F%2Fmedia.freestocktextures.com%2Fcache%2Fea%2Fe5%2Feae5d4d1e7382db872aff0601c233f1f.jpg&tbnid=Ur3N-Mzsm3jJ0M&vet=12ahUKEwiul_-Ohf_9AhXqElkFHa77BUIQMygHegUIARD1AQ..i&imgrefurl=https%3A%2F%2Ffreestocktextures.com%2Ftexture%2Fgrass-ground-green%2C785.html&docid=HIzRnqjwD9ZrNM&w=900&h=600&q=ground%20texture%20&hl=en&ved=2ahUKEwiul_-Ohf_9AhXqElkFHa77BUIQMygHegUIARD1AQ
+
+Dirt: https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.freepik.com%2Ffree-photo%2Funeven-wall-texture-close-up_23-2147626082.jpg&tbnid=_NBVabTJEKoM2M&vet=12ahUKEwiul_-Ohf_9AhXqElkFHa77BUIQMygIegUIARD3AQ..i&imgrefurl=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fground-texture&docid=GwKccutubx8CAM&w=626&h=417&q=ground%20texture%20&hl=en&ved=2ahUKEwiul_-Ohf_9AhXqElkFHa77BUIQMygIegUIARD3AQ
 
 
