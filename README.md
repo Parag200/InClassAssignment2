@@ -17,10 +17,23 @@ to have the final target fit our needs.
 In the Deferred diagram, the start is the same as Foward but it takes a turn as they all head into a shader then into the final target.
 Unlike the Forward rendering the infomation gets passed down into the G-Buffer before it produces the final target image on screen. 
 
+**Ship Movement & Toon & Moving Water**
+With the object having a rigidbody, I used the horizontal and vertical input instead of manually typing the code for the WASD. The horizontal and vertical input were multiplied with the float speed relative to the objects XYZ coordinates.
+
+A plane was made with a material, the material is connected to a shader that combines the overlay shader and toon shader.
+
+
+
+
 **Explaining Code Snippet 1**
 
+In the yellow highlight is using the OnRenderImage is used for setting up the final image on the mainCamera in unity, Setting the dimensions for the textures to know the geometry which will 
+be used later on in the code
+
+In the blue code we are using Graphics Blit with the source and currentDestination will be drawn on our mainCamera, 
 
 
+**Ship Toon & Moving Water**
 
 
 
@@ -58,6 +71,13 @@ their player. Such as lava moving below them as they try to parkour to the end s
 
 
 **Resources**
+
+Ship: https://poly.pizza/m/BgSZXwmm7k
+
+Water: https://allfreedesigns.com/water-textures-download-free/
+
+Water Foam: https://www.lughertexture.com/index.php?option=com_virtuemart&view=productdetails&virtuemart_product_id=366&virtuemart_category_id=1
+
 Grass: https://www.google.com/imgres?imgurl=https%3A%2F%2Fmedia.freestocktextures.com%2Fcache%2Fea%2Fe5%2Feae5d4d1e7382db872aff0601c233f1f.jpg&tbnid=Ur3N-Mzsm3jJ0M&vet=12ahUKEwiul_-Ohf_9AhXqElkFHa77BUIQMygHegUIARD1AQ..i&imgrefurl=https%3A%2F%2Ffreestocktextures.com%2Ftexture%2Fgrass-ground-green%2C785.html&docid=HIzRnqjwD9ZrNM&w=900&h=600&q=ground%20texture%20&hl=en&ved=2ahUKEwiul_-Ohf_9AhXqElkFHa77BUIQMygHegUIARD1AQ
 
 Dirt: https://www.google.com/imgres?imgurl=https%3A%2F%2Fimg.freepik.com%2Ffree-photo%2Funeven-wall-texture-close-up_23-2147626082.jpg&tbnid=_NBVabTJEKoM2M&vet=12ahUKEwiul_-Ohf_9AhXqElkFHa77BUIQMygIegUIARD3AQ..i&imgrefurl=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fground-texture&docid=GwKccutubx8CAM&w=626&h=417&q=ground%20texture%20&hl=en&ved=2ahUKEwiul_-Ohf_9AhXqElkFHa77BUIQMygIegUIARD3AQ
