@@ -20,20 +20,26 @@ Unlike the Forward rendering the infomation gets passed down into the G-Buffer b
 **Ship Movement & Toon & Moving Water**
 With the object having a rigidbody, I used the horizontal and vertical input instead of manually typing the code for the WASD. The horizontal and vertical input were multiplied with the float speed relative to the objects XYZ coordinates.
 
-A plane was made with a material, the material is connected to a shader that combines the overlay shader and toon shader.
+
+
 
 
 
 
 **Explaining Code Snippet 1**
 
-In the yellow highlight is using the OnRenderImage is used for setting up the final image on the mainCamera in unity, Setting the dimensions for the textures to know the geometry which will 
-be used later on in the code
+In the yellow highlight is using the OnRenderImage, in this function we are creating 2 render texutes, the first render texture is equal to the source image dimensions. Then the second render
+texture is copying the first render texture 
 
-In the blue code we are using Graphics Blit with the source and currentDestination will be drawn on our mainCamera, 
+In the blue and green highlight smaller render textures are being created for each iteration. Then these new render textures are set to the current destination render texture while the old render
+textures are released for memory, rendertextures is being downscaled by a factor of 2 and until the height is above 2 the loop will not break.
 
+In the pink highlight the rendertextures are ran through a loop to be copied on to the final rendertexure reversing the order of the downscaled rendertextures, outside of the loop final rendertexture will be copied onto the image destination using the Grahpics.Blit from Unity
+
+An example of using this code could be used for downscaling items in the far distance so when rendering they can be processed efficiently while keeping its overall quality
 
 **Ship Toon & Moving Water**
+
 
 
 
