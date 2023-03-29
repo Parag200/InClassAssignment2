@@ -19,6 +19,8 @@ Unlike the Forward rendering the infomation gets passed down into the G-Buffer b
 
 **Ship Movement & Moving Water**
 
+Screenshot in WaterMove&WaterMove Folder
+
 With the object having a rigidbody, I used the horizontal and vertical input instead of manually typing the code for the WASD. The horizontal and vertical input were multiplied with the float speed relative to the objects XYZ coordinates.
 
 The grass is just 5 planes in different sizes combined with a grass material. These planes were placed above the moving water to replicate the island image in the rubric. The blue water texture 
@@ -45,7 +47,7 @@ In the pink highlight the rendertextures are ran through a loop to be copied on 
 
 An example of using this code could be used for downscaling/blurring items in the far distance so when rendering they can be processed efficiently
 
-**Ship**
+**Ship **
 
 
 
