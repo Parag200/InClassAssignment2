@@ -8,6 +8,11 @@ Shader "custom/WaveWaterShader"
         _Speed ("Speed", Range (0,100)) = 10
         _Amp ("Amplitude", Range (0,1)) = 0.5
 
+
+         _MainTexT("Main", 2D) = "white" {}
+        _OverTex("Over", 2D) = "white" {}
+        _scrollX("Scroll X", Range(-5,5)) = 1
+        _scrollY("Scroll Y", Range(-5,5)) = 1
              
     }
     SubShader
@@ -18,6 +23,12 @@ Shader "custom/WaveWaterShader"
       
        
         #pragma surface surf Lambert vertex:vert
+
+
+       
+        sampler2D _OverTex;
+        float _scrollX;
+        float _scrollY;
 
 
         
@@ -63,10 +74,17 @@ Shader "custom/WaveWaterShader"
 
 
         sampler2D _MainTex;
+        sampler2D _MainTexT;
         void surf(Input IN, inout SurfaceOutput o)
         {
-            float4 c = tex2D(_MainTex, IN.uv_MainTex);
-            o.Albedo = c * IN.vertColor.rgb;
+            _scrollX *= _Time;
+            _scrollY *= _Time;
+            float3 main = (tex2D(_MainTexT, IN.uv_MainTex + float2(_scrollX, _scrollY)).rgb);
+            float3 over = (tex2D(_OverTex, IN.uv_MainTex+ float2(_scrollX / 2.0, _scrollY / 2.0)).rgb);
+            o.Albedo = (main + over) / 2.0;
+
+            //float4 c = tex2D(_MainTex, IN.uv_MainTex);
+            //o.Albedo = c * IN.vertColor.rgb;
         }
         ENDCG
     }

@@ -17,14 +17,21 @@ to have the final target fit our needs.
 In the Deferred diagram, the start is the same as Foward but it takes a turn as they all head into a shader then into the final target.
 Unlike the Forward rendering the infomation gets passed down into the G-Buffer before it produces the final target image on screen. 
 
-**Ship Movement & Toon & Moving Water**
+**Ship Movement & Moving Water**
+
 With the object having a rigidbody, I used the horizontal and vertical input instead of manually typing the code for the WASD. The horizontal and vertical input were multiplied with the float speed relative to the objects XYZ coordinates.
 
+The grass is just 5 planes in different sizes combined with a grass material. These planes were placed above the moving water to replicate the island image in the rubric. The blue water texture 
+was a dark blue to also replicate the image from the rubric, the choosing of the pirtate ship was also chosen to look like the ship in the image from the rubric.
 
+For the wave, a Shader was appiled on to a 3D plane. Here we are using 5 properties, TintColor for color that tints the suface, MainTex for inputting a texture, Freq that controls the frequency of 
+the waves, Speed that controls how fast the waves move and Amp that controls the amplitude of the waves. Setting t as the speed * _Time allowing for the wave to change over a duration of time, 
+using hte sine equation to get the waveHeight. This results in pulling the wave up or down using time, vertex.x, freq, and amp.  We then set the vertex value to the current value which is then 
+normalized as time goes by.  The Freq, Speed and Amp were all chnaged to fit a more gentle wave motion as the based settings had the plane moving in a unrealistic way of how water would move.
 
+To give the moving water more of a realistic feel, I added in the overlay shader code with the wave code, allowing a harmony to be made with the moving water X and Y, as well as the waves going up and down. The final part for the water and water foam to show was to comment out float4 c = tex2D(_MainTex, IN.uv_MainTex); and o.Albedo = c * IN.vertColor.rgb;
 
-
-
+(was not able to figure our how to also add in toon shader to the moving water)
 
 **Explaining Code Snippet 1**
 
@@ -36,9 +43,9 @@ textures are released for memory, rendertextures is being downscaled by a factor
 
 In the pink highlight the rendertextures are ran through a loop to be copied on to the final rendertexure reversing the order of the downscaled rendertextures, outside of the loop final rendertexture will be copied onto the image destination using the Grahpics.Blit from Unity
 
-An example of using this code could be used for downscaling items in the far distance so when rendering they can be processed efficiently while keeping its overall quality
+An example of using this code could be used for downscaling/blurring items in the far distance so when rendering they can be processed efficiently
 
-**Ship Toon & Moving Water**
+**Ship**
 
 
 
