@@ -26,10 +26,7 @@ With the object having a rigidbody, I used the horizontal and vertical input ins
 The grass is just 5 planes in different sizes combined with a grass material. These planes were placed above the moving water to replicate the island image in the rubric. The blue water texture 
 was a dark blue to also replicate the image from the rubric, the choosing of the pirtate ship was also chosen to look like the ship in the image from the rubric.
 
-For the wave, a Shader was appiled on to a 3D plane. Here we are using 5 properties, TintColor for color that tints the suface, MainTex for inputting a texture, Freq that controls the frequency of 
-the waves, Speed that controls how fast the waves move and Amp that controls the amplitude of the waves. Setting t as the speed * _Time allowing for the wave to change over a duration of time, 
-using hte sine equation to get the waveHeight. This results in pulling the wave up or down using time, vertex.x, freq, and amp.  We then set the vertex value to the current value which is then 
-normalized as time goes by.  The Freq, Speed and Amp were all chnaged to fit a more gentle wave motion as the based settings had the plane moving in a unrealistic way of how water would move.
+A material was made and a surface shader was appiled onto it, this material was then placed onto the water plane. For the wave, a Shader was appiled on to a 3D plane. Here we are using 5 properties, TintColor for color that tints the suface, MainTex for inputting a texture, Freq that controls the frequency of the waves, Speed that controls how fast the waves move and Amp that controls the amplitude of the waves. Setting t as the speed * _Time allowing for the wave to change over a duration of time, using hte sine equation to get the waveHeight. This results in pulling the wave up or down using time, vertex.x, freq, and amp.  We then set the vertex value to the current value which is then normalized as time goes by.  The Freq, Speed and Amp were all chnaged to fit a more gentle wave motion as the based settings had the plane moving in a unrealistic way of how water would move.
 
 To give the moving water more of a realistic feel, I added in the overlay shader code with the wave code, allowing a harmony to be made with the moving water X and Y, as well as the waves going up and down. The final part for the water and water foam to show was to comment out float4 c = tex2D(_MainTex, IN.uv_MainTex); and o.Albedo = c * IN.vertColor.rgb;
 
@@ -47,15 +44,18 @@ In the pink highlight the rendertextures are ran through a loop to be copied on 
 
 An example of using this code could be used for downscaling/blurring items in the far distance so when rendering they can be processed efficiently
 
-**Ship **
+**Ship Vertex Extruding & Shadows**
 
+(Screenshot of inverted extrusion on ship)
 
+A material was made and a surface shader was appiled onto it, this material was then placed onto the ship base. A slider was made that ranges the amount of extrusion on the object, using the
+vertex poisiton, normals and texcoords. We are able to use these values to change the vertex xyz coordinates by multiplying the amount of the slider and the v.normal. This shader was modified by 
+chaning the amount to negative as this changes the extrusion from being outwards to going inwards.
 
+(Screenshot of shadow with less opacity on ship)
 
-
-
-
-
+A material was made and a surface shader was appiled onto it, this material was then placed onto the ship base. In this shader we are changing the color and opacity of the shadow on the ship base.
+Having a shadowColor and Amount slider are declared as they will be used later in the code. The CSLambertmodel is used to combine the calculated diffuse lighting and shadow lighting present in the game scene. Using the dot product with the surface normal and light direction to get the diffuse lighting, here we also use the shadowColor to set what color the user can select. When calculating c.rgb, we use the shadowColor, 1-atten and the division of the Amount slider. This will ensure that as you slide to the right the color of the shadow on the object will have less opacity. 
 
 **Explaining Code Snippet 2**
 
